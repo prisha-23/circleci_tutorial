@@ -1,10 +1,5 @@
 version: 2.1
 
-workflow:
-  test-deploy:
-    jobs:
-      - build
-      - build2
 jobs:
   build:
     docker:
@@ -18,3 +13,11 @@ jobs:
     steps:
       - checkout
       - run: aws --version
+      
+workflows:
+  version: 2.1
+  
+  my_workflows:
+    jobs:
+      - build
+      - build2
