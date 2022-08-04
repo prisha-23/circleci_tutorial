@@ -3,7 +3,8 @@ version: 2.1
 workflow:
   test-deploy:
     jobs:
-      - test
+      - build
+      - build2
 jobs:
   build:
     docker:
@@ -11,3 +12,9 @@ jobs:
     steps:
       - checkout
       - run: node --version  
+   build2:
+    docker:
+      - image: cimg/aws:2022.06
+    steps:
+      - checkout
+      - run: aws --version
