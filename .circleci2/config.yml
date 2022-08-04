@@ -1,14 +1,13 @@
 version: 2.1
 
-workflows:
-  test-environment:
+workflow:
+  test-deploy:
     jobs:
-      -test1
-      
-    jobs:
-      test:
-       docker:
-          - image: cimg/node:18.4.0
-        steps:
-           - checkout
-           - run: node --version
+      - test
+jobs:
+  build:
+    docker:
+      - image: cimg/node:18.7.0
+    steps:
+      - checkout
+      - run: node --version
